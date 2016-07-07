@@ -2,7 +2,7 @@
 <html ng-app="statement">
     <head>
         <!-- website title -->
-        <title>Отправка заявки</title>
+        <title>Тестовое задание</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -13,101 +13,129 @@
     </head>
   
     <body>
-        <div class="container-fluid statements" ng-controller="FormCtrl as vm">
+        <div class="container profile" ng-controller="FormCtrl as vm" mtc-scroll id="page" ng-class="{min:boolChangeClass}">
+            <h1>Профиль</h1>  
+
+            <div ng-if="scrolled" style="position:fixed;bottom:0;right:0;">!!!!!!!!!!!!!!</div>
+
             <div class="row">
-                <div class="col-lg-12">
-                    <h1>Отправка заявки</h1>  
-                    <div class="well statements__form">
-                        <form role="form" name="appform" class="form-horizontal">
-                            <div class="form-group"
-                                ng-class="{'has-error':vm.submit && !vm.statement.title}">
-                                <label class="control-label col-sm-4 lead">
-                                    Название заявки
-                                </label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control input-lg" 
-                                        name="title"
-                                        ng-model="vm.statement.title" 
-                                        placeholder="Введите название заявки"
-                                        ng-required="true"/>
-
-                                    <span class="help-block alert alert-danger statements__alert">
-                                        Введите название заявки
-                                    </span>
-                                </div>
-                            </div><!-- end form group -->
-                            <div class="form-group"
-                                ng-class="{'has-error':vm.submit && !vm.statement.date}">
-
-                                <label class="control-label col-sm-4 lead">
-                                    Дата выполнения
-                                </label>
-                                <div class="col-sm-8">
-                                    <mtc-calendar 
-                                        date="vm.statement.date" 
-                                        format="yyyy/MM/dd" 
-                                        original-date="vm.originalDate"
-                                        ng-required="true"></mtc-calendar>
-
-                                    <span class="help-block alert alert-danger statements__alert">
-                                        Введите название заявки
-                                    </span>
-                                </div>
-                            </div><!-- end form group -->
-                            <div class="form-group">
-                                <div class="col-sm-8 col-sm-offset-4">
-                                    <input type="button" class="btn btn-lg btn-primary" 
-                                        value="Отправить" ng-click="vm.sent()" />
-                                </div>
-                            </div><!-- end form group -->
-
-                        </form>
-                    </div>
+                <div class="col-sm-4">
+                    <img src="images/photo.jpg" />
                 </div>
-            </div>
+                <div class="col-sm-8">
+                    <form role="form" name="appform" class="form">
+                        <div class="form-group"
+                            ng-class="{'has-error':vm.submit && !vm.statement.title}">
+                            <label class="control-label">
+                                ФИО
+                            </label>
+                            <div>
+                                <input type="text" class="form-control input-lg" 
+                                    name="title"
+                                    ng-model="vm.statement.title" 
+                                    placeholder="Введите ФИО"
+                                    ng-required="true"/>
 
-            <div class="row statements__list">
-                <div class="col-sm-12">          
-                    <div class="text-center" ng-if="0 === vm.statements.length">
-                        <p class="lead">Нет заявок</p>
-                    </div>
+                                <span class="help-block alert alert-danger statements__alert">
+                                    Введите ФИО
+                                </span>
+                            </div>
+                        </div><!-- end form group -->
+                        <div class="form-group"
+                            ng-class="{'has-error':vm.submit && !vm.statement.date}">
 
-                    <table class="table table-striped" ng-if="0 < vm.statements.length"> 
-                        <thead> 
-                            <tr> 
-                                <th>№</th> 
-                                <th>Название</th> 
-                                <th><a href="" ng-click="vm.sort('date')">Дата</a></th>  
-                                <th>&#160;</th> 
-                            </tr> 
-                        </thead> 
-                        <tbody> 
-                            <tr ng-repeat="(key, statement) in vm.statements | offset: (vm.currentPage-1)*vm.itemsPerPage | 
-                                limitTo: vm.itemsPerPage"> 
+                            <label class="control-label">
+                                E-mail
+                            </label>
+                            <div>
+                                <input type="text" class="form-control input-lg" 
+                                    name="title"
+                                    ng-model="vm.statement.email" 
+                                    placeholder="Введите ФИО"
+                                    ng-required="true"/>                                
 
-                                <th scope="row">
-                                    {{key+1}}
-                                </th> 
-                                <td>{{statement.title}}</td> 
-                                <td>{{statement.date}}</td> 
-                                <td>
-                                    <button type="button" class="close"
-                                        ng-click="vm.remove(key)">&times;</button>
-                                </td>
-                            </tr> 
-                        </tbody> 
-                    </table>  
+                                <span class="help-block alert alert-danger statements__alert">
+                                    Введите e-mail
+                                </span>
+                            </div>
+                        </div><!-- end form group -->
+                        <div class="form-group"
+                            ng-class="{'has-error':vm.submit && !vm.statement.title}">
+                            <label class="control-label">
+                                Телефон
+                            </label>
+                            <div>
+                                <input type="text" class="form-control input-lg" 
+                                    name="title"
+                                    ng-model="vm.statement.title" 
+                                    placeholder="Введите телефон"
+                                    ng-required="true"/>
 
-                    <uib-pagination 
-                        ng-if="vm.itemsPerPage < vm.statements.length"
-                        class="pagination-sm statements__pagination" 
-                        total-items="vm.statements.length" 
-                        items-per-page="vm.itemsPerPage"
-                        ng-model="vm.currentPage" 
-                        max-size="vm.maxSize" 
-                        boundary-link-numbers="true" 
-                        rotate="false"></uib-pagination>  
-                </div>              
+                                <span class="help-block alert alert-danger statements__alert">
+                                    Введите телефон
+                                </span>
+                            </div>
+                        </div><!-- end form group -->
+                        <div class="form-group"
+                            ng-class="{'has-error':vm.submit && !vm.statement.title}">
+                            <label class="control-label">
+                                Город
+                            </label>
+                            <div>
+                                <input type="text" class="form-control input-lg" 
+                                    name="title"
+                                    ng-model="vm.statement.title" 
+                                    placeholder="Введите город"
+                                    ng-required="true"/>
+
+                                <span class="help-block alert alert-danger statements__alert">
+                                    Введите город
+                                </span>
+                            </div>
+                        </div><!-- end form group -->
+                        <div class="form-group"
+                            ng-class="{'has-error':vm.submit && !vm.statement.title}">
+                            <label class="control-label">
+                                Образование
+                            </label>
+                            <div>
+                                <input type="text" class="form-control input-lg" 
+                                    name="title"
+                                    ng-model="vm.statement.title" 
+                                    placeholder="Введите образование"
+                                    ng-required="true"/>
+
+                                <span class="help-block alert alert-danger statements__alert">
+                                    Введите образование
+                                </span>
+                            </div>
+                        </div><!-- end form group -->
+                        <div class="form-group"
+                            ng-class="{'has-error':vm.submit && !vm.statement.title}">
+                            <label class="control-label">
+                                Коротко о себе
+                            </label>
+                            <div>
+                                <textarea type="text" class="form-control" 
+                                    name="title"
+                                    ng-model="vm.statement.title" 
+                                    placeholder="Введите информацию"
+                                    ng-required="true"></textarea>
+
+                                <span class="help-block alert alert-danger statements__alert">
+                                    Введите информацию
+                                </span>
+                            </div>
+                        </div><!-- end form group -->
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-4">
+                                <input type="button" class="btn btn-lg btn-primary" 
+                                    value="Отправить" ng-click="vm.sent()" />
+                            </div>
+                        </div><!-- end form group -->
+
+                    </form>
+                </div>
             </div>
         </div> 
         <!-- build:js js/lib.js -->
@@ -123,6 +151,7 @@
         <script src="./src/client/app/offset.service.js"></script>
         <script src="./src/client/app/statement.service.js"></script>
         <script src="./src/client/app/calendar.directive.js"></script>
+        <script src="./src/client/app/scroll.directive.js"></script>
         <!-- inject:templates:js -->
         <!-- endinject -->
 

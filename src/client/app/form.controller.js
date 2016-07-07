@@ -5,10 +5,10 @@
         .module('statement')
         .controller('FormCtrl', FormCtrl);
 
-    FormCtrl.$inject = ['ngNotify', '$scope', 'statementSrv'];
+    FormCtrl.$inject = ['ngNotify', '$scope', 'statementSrv', '$timeout', '$window'];
 
     /* @ngInject */
-    function FormCtrl(ngNotify, $scope, statementSrv) {
+    function FormCtrl(ngNotify, $scope, statementSrv, $timeout, $window) {
 
         /*jshint validthis: true */
         var vm = this;
@@ -26,8 +26,7 @@
 
         ////////////////
 
-        function init() {   
-        }
+        function init() { }
 
         function remove(key) {
             statementSrv.deleteElement(vm.statements, key);
