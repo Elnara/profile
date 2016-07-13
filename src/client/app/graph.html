@@ -1,0 +1,149 @@
+<div class="graph">
+    <div class="col-sm-8 graph__block">
+        <div class="row graph__elements">
+            <div ng-repeat="(key, item) in vm.model"
+                style="background-color: #191970;width:70px;display: inline-block;bottom: 0;
+                position: absolute;height: {{item*200/10}}px;left:{{80*$index}}px;
+                color: {{item > 0 ? '#fff' : '#000'}}">
+
+                <span class="graph__title">{{key}}</span>
+            </div>
+        </div> 
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group"
+            ng-class="{'has-error':vm.submit && !vm.model.title}">
+            <label class="control-label">
+                AngularJs
+            </label>
+            <div>
+                <input type="number" class="form-control
+                    ng-pristine ng-valid ng-valid-number ng-valid-max ng-valid-min" 
+                    name="title"
+                    ng-model="vm.model.angularJs" 
+                    placeholder="Введите город"
+                    ng-required="true"
+                    ng-max="10"
+                    ng-min="0" />
+
+                <span class="help-block alert alert-danger">
+                    Введите город
+                </span>
+            </div>
+        </div><!-- end form group -->
+        <div class="form-group"
+            ng-class="{'has-error':vm.submit && !vm.model.title}">
+            <label class="control-label">
+                Css
+            </label>
+            <div>
+                <input type="text" class="form-control" 
+                    name="title"
+                    ng-model="vm.model.css" 
+                    placeholder="Введите город"
+                    ng-required="true"
+                    ng-max="10"
+                    ng-min="0" />
+
+                <span class="help-block alert alert-danger">
+                    Введите город
+                </span>
+            </div>
+        </div><!-- end form group -->
+        <div class="form-group"
+            ng-class="{'has-error':vm.submit && !vm.model.title}">
+            <label class="control-label">
+                Gulp
+            </label>
+            <div>
+                <input type="text" class="form-control" 
+                    name="title"
+                    ng-model="vm.model.gulp" 
+                    placeholder="Введите город"
+                    ng-required="true"
+                    ng-max="10"
+                    ng-min="0" />
+
+                <span class="help-block alert alert-danger">
+                    Введите город
+                </span>
+            </div>
+        </div><!-- end form group -->
+        <div class="form-group"
+            ng-class="{'has-error':vm.submit && !vm.model.title}">
+            <label class="control-label">
+                Html
+            </label>
+            <div>
+                <input type="text" class="form-control" 
+                    name="title"
+                    ng-model="vm.model.html" 
+                    placeholder="Введите город"
+                    ng-required="true"
+                    ng-max="10"
+                    ng-min="0" />
+
+                <span class="help-block alert alert-danger">
+                    Введите город
+                </span>
+            </div>
+        </div><!-- end form group -->
+        <div class="form-group"
+            ng-class="{'has-error':vm.submit && !vm.model.title}">
+            <label class="control-label">
+                jQuery
+            </label>
+            <div>
+                <input type="text" class="form-control" 
+                    name="title"
+                    ng-model="vm.model.jQuery" 
+                    placeholder="Введите город"
+                    ng-required="true"
+                    ng-max="10"
+                    ng-min="0" />
+
+                <span class="help-block alert alert-danger">
+                    Введите город
+                </span>
+            </div>
+        </div><!-- end form group -->
+        <div class="form-group"
+            ng-class="{'has-error':vm.submit && !vm.model.title}">
+            <label class="control-label">
+                Препроцессоры css
+            </label>
+            <div>
+                <input type="text" class="form-control" 
+                    name="title"
+                    ng-model="vm.model.preCss" 
+                    placeholder="Введите город"
+                    ng-required="true"
+                    ng-max="10"
+                    ng-min="0" />
+
+                <span class="help-block alert alert-danger">
+                    Введите город
+                </span>
+            </div>
+        </div><!-- end form group -->
+        <div class="form-group"
+            ng-class="{'has-error':vm.submit && !vm.model.title}">
+            <label class="control-label">
+                VanilaJS
+            </label>
+            <div>
+                <input type="text" class="form-control" 
+                    name="title"
+                    ng-model="vm.model.vanilaJs" 
+                    placeholder="Введите город"
+                    ng-required="true"
+                    ng-max="10"
+                    ng-min="0" />
+
+                <span class="help-block alert alert-danger">
+                    Введите город
+                </span>
+            </div>
+        </div><!-- end form group -->
+    </div>
+</div>

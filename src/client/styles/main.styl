@@ -4,13 +4,44 @@
     src: url('../../../bower_components/bootstrap-stylus/fonts/glyphicons-halflings-regular.eot?') format('embedded-opentype'),  
     url('../../../bower_components/bootstrap-stylus/fonts/glyphicons-halflings-regular.svg') format('svg');
 }
-.profile {
-    .statements__list,
-    .statements__form {
-        margin-top: 30px;
-    }
 
-    .statements__pagination {
+
+
+
+body {
+    background: #edeef0;
+    color: #363636;
+    font-size: 14px;
+    font-family: Georgia sans-serif;
+    font-weight: 400;
+}
+
+.profile {
+    /*.profile__form {
+        background: #fff;
+        border-radius: 2px;
+        box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+        padding-top: 20px;
+    }*/
+
+    .profile__up {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        font-size: 27px;
+        color: #3782c4;
+        width: 50px;
+        height: 50px;
+        border: 5px solid #3782c4;
+        border-radius: 75px;
+        text-align: center;    
+    }
+    .header {
+        font-size: 36px;
+        line-height: normal;
+        font-weight: 400;
+    }
+    .profile__pagination {
         margin-top: 20px;
         margin-left: 50%;
         transform: translateX(-50%);    
@@ -24,7 +55,35 @@
         display: none;
     }
 
-    .statements__alert {
+    .profile__alert {
         padding: 10px;
+    }
+
+    .profile__img {
+        width: 90%;
+        margin: 0 auto;
+        display: block;
+    }
+    .graph__block {
+        box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+        border-radius: 4px;
+        background-color: #fff; 
+        padding: 15px; 
+    }  
+    .graph {
+        margin-top: 15px;
+    }
+    .graph__elements {
+        height: 200px;
+        position: relative;
+        margin-left: 0;
+    }
+
+    .graph__title {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);  
+        font-weight: 600;
     }
 }

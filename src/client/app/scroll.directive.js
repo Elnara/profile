@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('statement')
+        .module('app')
         .directive('mtcScroll', mtcScroll);
 
     mtcScroll.$inject = ['$timeout', '$window'];
@@ -10,10 +10,20 @@
     function mtcScroll($timeout, $window) {
         return function(scope, element, attrs) {
             angular.element($window).bind("scroll", function() {
-scope.scrolled = true;
-               $timeout(function() {
-                    scope.scrolled = false;
-                    scope.$apply();
+                if(scope.scrolled) {
+                    scope.doubleScroll = true;
+                }
+
+                scope.scrolled = true;
+
+               $timeout(function() {                            
+                    if(scope.doubleScroll){
+                        scope.doubleScroll = false;
+                        scope.scrolled = true;
+                    } else {
+                        scope.scrolled = false;
+                    }
+                    scope.$apply(); 
                }, 2000);                
                 scope.$apply();
             });

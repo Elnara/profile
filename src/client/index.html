@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="statement">
+<html ng-app="app">
     <head>
         <!-- website title -->
         <title>Тестовое задание</title>
@@ -13,129 +13,139 @@
     </head>
   
     <body>
-        <div class="container profile" ng-controller="FormCtrl as vm" mtc-scroll id="page" ng-class="{min:boolChangeClass}">
-            <h1>Профиль</h1>  
+        <div class="container profile" id="scrollArea" ng-controller="FormCtrl as vm" ng-cloak
+            mtc-scroll id="page" ng-class="{min:boolChangeClass}">
 
-            <div ng-if="scrolled" style="position:fixed;bottom:0;right:0;">!!!!!!!!!!!!!!</div>
+            <h1 class="header">Профиль</h1>  
+<div id="header"></div>
+            <div ng-if="scrolled" class="profile__up" ng-click="vm.toTop()"></div>
 
             <div class="row">
-                <div class="col-sm-4">
-                    <img src="images/photo.jpg" />
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Личные данные</div>
+                    <div class="panel-body">
+                        <div class="profile__form">
+                            <div class="col-sm-4 col-xs-3">
+                                <img src="images/photo.jpg" class="profile__img" />
+                            </div>
+                            <div class="col-sm-7 col-xs-9">
+                                <form role="form" name="appform" class="form">
+                                    <div class="form-group"
+                                        ng-class="{'has-error':vm.submit && !vm.profileInfo.title}">
+                                        <label class="control-label">
+                                            ФИО
+                                        </label>
+                                        <div>
+                                            <input type="text" class="form-control" 
+                                                name="title"
+                                                ng-model="vm.profileInfo.fio" 
+                                                placeholder="Введите ФИО"
+                                                ng-required="true"/>
+
+                                            <span class="help-block alert alert-danger profile__alert">
+                                                Введите ФИО
+                                            </span>
+                                        </div>
+                                    </div><!-- end form group -->
+                                    <div class="form-group"
+                                        ng-class="{'has-error':vm.submit && !vm.profileInfo.date}">
+
+                                        <label class="control-label">
+                                            E-mail
+                                        </label>
+                                        <div>
+                                            <input type="text" class="form-control" 
+                                                name="title"
+                                                ng-model="vm.profileInfo.email" 
+                                                placeholder="Введите e-mail"
+                                                ng-required="true"/>                                
+
+                                            <span class="help-block alert alert-danger profile__alert">
+                                                Введите e-mail
+                                            </span>
+                                        </div>
+                                    </div><!-- end form group -->
+                                    <div class="form-group"
+                                        ng-class="{'has-error':vm.submit && !vm.profileInfo.title}">
+                                        <label class="control-label">
+                                            Телефон
+                                        </label>
+                                        <div>
+
+                                        <phonenumber-directive placeholder="'Введите телефон'"
+                                            model="vm.profileInfo.phone"></phonenumber-directive>
+
+                                            <span class="help-block alert alert-danger profile__alert">
+                                                Введите телефон
+                                            </span>
+                                        </div>
+                                    </div><!-- end form group -->
+                                    <div class="form-group"
+                                        ng-class="{'has-error':vm.submit && !vm.profileInfo.title}">
+                                        <label class="control-label">
+                                            Город
+                                        </label>
+                                        <div>
+                                            <input type="text" class="form-control" 
+                                                name="title"
+                                                ng-model="vm.profileInfo.city" 
+                                                placeholder="Введите город"
+                                                ng-required="true"/>
+
+                                            <span class="help-block alert alert-danger profile__alert">
+                                                Введите город
+                                            </span>
+                                        </div>
+                                    </div><!-- end form group -->
+                                    <div class="form-group"
+                                        ng-class="{'has-error':vm.submit && !vm.profileInfo.title}">
+                                        <label class="control-label">
+                                            Образование
+                                        </label>
+                                        <div>
+                                            <input type="text" class="form-control" 
+                                                name="title"
+                                                ng-model="vm.profileInfo.education" 
+                                                placeholder="Введите образование"
+                                                ng-required="true"/>
+
+                                            <span class="help-block alert alert-danger profile__alert">
+                                                Введите образование
+                                            </span>
+                                        </div>
+                                    </div><!-- end form group -->
+                                    <div class="form-group"
+                                        ng-class="{'has-error':vm.submit && !vm.profileInfo.title}">
+                                        <label class="control-label">
+                                            Коротко о себе
+                                        </label>
+                                        <div>
+                                            <textarea type="text" class="form-control" 
+                                                name="title"
+                                                ng-model="vm.profileInfo.info" 
+                                                placeholder="Введите информацию"
+                                                ng-required="true"></textarea>
+
+                                            <span class="help-block alert alert-danger profile__alert">
+                                                Введите информацию
+                                            </span>
+                                        </div>
+                                    </div><!-- end form group -->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-8">
-                    <form role="form" name="appform" class="form">
-                        <div class="form-group"
-                            ng-class="{'has-error':vm.submit && !vm.statement.title}">
-                            <label class="control-label">
-                                ФИО
-                            </label>
-                            <div>
-                                <input type="text" class="form-control input-lg" 
-                                    name="title"
-                                    ng-model="vm.statement.title" 
-                                    placeholder="Введите ФИО"
-                                    ng-required="true"/>
+            </div>
 
-                                <span class="help-block alert alert-danger statements__alert">
-                                    Введите ФИО
-                                </span>
-                            </div>
-                        </div><!-- end form group -->
-                        <div class="form-group"
-                            ng-class="{'has-error':vm.submit && !vm.statement.date}">
+            <div class="row">
 
-                            <label class="control-label">
-                                E-mail
-                            </label>
-                            <div>
-                                <input type="text" class="form-control input-lg" 
-                                    name="title"
-                                    ng-model="vm.statement.email" 
-                                    placeholder="Введите ФИО"
-                                    ng-required="true"/>                                
-
-                                <span class="help-block alert alert-danger statements__alert">
-                                    Введите e-mail
-                                </span>
-                            </div>
-                        </div><!-- end form group -->
-                        <div class="form-group"
-                            ng-class="{'has-error':vm.submit && !vm.statement.title}">
-                            <label class="control-label">
-                                Телефон
-                            </label>
-                            <div>
-                                <input type="text" class="form-control input-lg" 
-                                    name="title"
-                                    ng-model="vm.statement.title" 
-                                    placeholder="Введите телефон"
-                                    ng-required="true"/>
-
-                                <span class="help-block alert alert-danger statements__alert">
-                                    Введите телефон
-                                </span>
-                            </div>
-                        </div><!-- end form group -->
-                        <div class="form-group"
-                            ng-class="{'has-error':vm.submit && !vm.statement.title}">
-                            <label class="control-label">
-                                Город
-                            </label>
-                            <div>
-                                <input type="text" class="form-control input-lg" 
-                                    name="title"
-                                    ng-model="vm.statement.title" 
-                                    placeholder="Введите город"
-                                    ng-required="true"/>
-
-                                <span class="help-block alert alert-danger statements__alert">
-                                    Введите город
-                                </span>
-                            </div>
-                        </div><!-- end form group -->
-                        <div class="form-group"
-                            ng-class="{'has-error':vm.submit && !vm.statement.title}">
-                            <label class="control-label">
-                                Образование
-                            </label>
-                            <div>
-                                <input type="text" class="form-control input-lg" 
-                                    name="title"
-                                    ng-model="vm.statement.title" 
-                                    placeholder="Введите образование"
-                                    ng-required="true"/>
-
-                                <span class="help-block alert alert-danger statements__alert">
-                                    Введите образование
-                                </span>
-                            </div>
-                        </div><!-- end form group -->
-                        <div class="form-group"
-                            ng-class="{'has-error':vm.submit && !vm.statement.title}">
-                            <label class="control-label">
-                                Коротко о себе
-                            </label>
-                            <div>
-                                <textarea type="text" class="form-control" 
-                                    name="title"
-                                    ng-model="vm.statement.title" 
-                                    placeholder="Введите информацию"
-                                    ng-required="true"></textarea>
-
-                                <span class="help-block alert alert-danger statements__alert">
-                                    Введите информацию
-                                </span>
-                            </div>
-                        </div><!-- end form group -->
-                        <div class="form-group">
-                            <div class="col-sm-8 col-sm-offset-4">
-                                <input type="button" class="btn btn-lg btn-primary" 
-                                    value="Отправить" ng-click="vm.sent()" />
-                            </div>
-                        </div><!-- end form group -->
-
-                    </form>
-                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Инфографика</div>
+                    <div class="panel-body">    
+                        <graph></graph>
+                    </div>
+                </div>            
             </div>
         </div> 
         <!-- build:js js/lib.js -->
@@ -145,13 +155,12 @@
         <!-- endbuild -->
 
         <!-- build:js js/app.js -->
-        <script src="./src/client/app/statement.module.js"></script>
+        <script src="./src/client/app/app.module.js"></script>
         <script src="./src/client/app/form.controller.js"></script>
-        <script src="./src/client/app/dateFormat.service.js"></script>
-        <script src="./src/client/app/offset.service.js"></script>
-        <script src="./src/client/app/statement.service.js"></script>
-        <script src="./src/client/app/calendar.directive.js"></script>
+        <script src="./src/client/app/graph.directive.js"></script>
+        <script src="./src/client/app/maxVal.directive.js"></script>
         <script src="./src/client/app/scroll.directive.js"></script>
+        <script src="./src/client/app/phone.directive.js"></script>
         <!-- inject:templates:js -->
         <!-- endinject -->
 

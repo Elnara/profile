@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('statement', [
+        .module('app', [
             'ngNotify',
             'ui.bootstrap'
         ]);

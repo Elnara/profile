@@ -2,13 +2,13 @@
     'use strict';
 
     angular
-        .module('statement')
+        .module('app')
         .controller('FormCtrl', FormCtrl);
 
-    FormCtrl.$inject = ['ngNotify', '$scope', 'statementSrv', '$timeout', '$window'];
+    FormCtrl.$inject = ['$anchorScroll', '$location', 'ngNotify', '$scope', '$timeout', '$window'];
 
     /* @ngInject */
-    function FormCtrl(ngNotify, $scope, statementSrv, $timeout, $window) {
+    function FormCtrl($anchorScroll, $location, ngNotify, $scope, $timeout, $window) {
 
         /*jshint validthis: true */
         var vm = this;
@@ -21,15 +21,35 @@
         vm.submit = false;
         vm.sort = sort;
         vm.sortType = true;
-        vm.statements = [];
+        vm.toTop = toTop();
+        vm.profileInfo = [];
         init();
 
         ////////////////
 
-        function init() { }
+        function init() { 
+            vm.profileInfo = {
+                fio: 'Гайнанова Эльнара Мансуровна',
+                email: 'gainanovawork@gmail.com',
+                phone: '9020000230',
+                city: 'Ульяновск',
+                education: 'высшее, УлГТУ, очно-дневное, 2014 год',
+                info: 'описание'
+            }
+
+
+
+var windowElement = angular.element($window);
+windowElement.on('beforereload', function (event) {
+    // do whatever you want in here before the page unloads.        
+alert(1);
+    // the following line of code will prevent reload or navigating away.
+    event.preventDefault();
+});            
+        }
 
         function remove(key) {
-            statementSrv.deleteElement(vm.statements, key);
+            profilerv.deleteElement(vm.profileInfo, key);
         }
 
         function sent() {
@@ -44,8 +64,8 @@
                 );
             } else {
                 vm.submit = false;
-                vm.statements.push(vm.statement);
-                vm.statement = {};
+                vm.profileInfo.push(vm.profileInfo);
+                vm.profileInfo = {};
             }
         }
 
@@ -53,8 +73,13 @@
             vm.sortType = !vm.sortType;
 
             if('date' === type) {
-                vm.statements = statementSrv.sortingForDate(vm.statements, vm.sortType);
+                vm.profileInfo = profilerv.sortingForDate(vm.profileInfo, vm.sortType);
             }
+        }
+
+        function toTop() {
+            $location.hash('header');
+            $anchorScroll();
         }
     }
 })();
